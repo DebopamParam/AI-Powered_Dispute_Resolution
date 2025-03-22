@@ -4,6 +4,7 @@ emoji: 🤖
 colorFrom: green
 colorTo: gray
 pinned: false
+sdk: docker
 ---
 
 # Banking Dispute Resolution System
