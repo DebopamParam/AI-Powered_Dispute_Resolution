@@ -1,11 +1,11 @@
----
+<!-- ---
 title: Banking Dispute Resolution System
 emoji: 🤖
 colorFrom: green
 colorTo: gray
 pinned: false
 sdk: docker
----
+--- -->
 # AI-Powered Dispute Resolution
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/DebopamParam/AI-Powered_Dispute_Resolution/ci.yml?branch=main)](https://github.com/DebopamParam/AI-Powered_Dispute_Resolution/actions)
