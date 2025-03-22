@@ -1,15 +1,24 @@
-FROM python:3.11-slim
+FROM python:3.11-slim 
+ 
+WORKDIR /app 
+ 
+COPY requirements.txt . 
+RUN pip install --no-cache-dir -r requirements.txt 
 
-WORKDIR /app
+RUN echo "Cache invalidated 1"
+ 
+COPY . . 
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Make sure both the database file and its parent directory are writable
+RUN chmod 777 /app && \
+    chmod 666 /app/disputes.db && \
+    # Ensure the database file is owned by the user running the application
+    chown 1000:1000 /app/disputes.db || true
 
-COPY . .
-
-RUN chmod 666 /app/disputes.db
-
+# Create a non-root user to run the application
+RUN useradd -m appuser
+USER appuser
  
 ENV PYTHONPATH=/app 
-
+ 
 CMD ["python", "app/entrypoint.py"]
