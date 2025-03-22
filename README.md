@@ -355,3 +355,296 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 ## ⚠️ Disclaimer
 
 This project is a prototype and should be used with caution. The AI-generated recommendations should not be considered legal advice. Always consult with a qualified legal professional for legal matters.
+
+
+# API Endpoints with JSON Structures
+
+## Customers Endpoints
+
+### 1. Create Customer
+
+-   **Endpoint**: `/customers/`
+-   **Method**: POST
+-   **Operation**: Create
+-   **Input JSON**:
+    
+    ```json
+    {  "name": "John Doe",  "email": "john.doe@example.com",  "account_type": "Individual"}
+    
+    ```
+    
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440000",  "name": "John Doe",  "email": "john.doe@example.com",  "account_type": "Individual",  "dispute_count": 0,  "created_at": "2025-03-22T14:30:45.123456"}
+    
+    ```
+    
+-   **Status Code**: 201
+
+### 2. Get All Customers
+
+-   **Endpoint**: `/customers/`
+-   **Method**: GET
+-   **Operation**: Read
+-   **Query Parameters**:
+    -   `skip`: int (default: 0)
+    -   `limit`: int (default: 100)
+    -   `account_type`: string (optional)
+-   **Output JSON**:
+    
+    ```json
+    [  {    "id": "550e8400-e29b-41d4-a716-446655440000",    "name": "John Doe",    "email": "john.doe@example.com",    "account_type": "Individual",    "dispute_count": 2,    "created_at": "2025-03-22T14:30:45.123456"  },  {    "id": "550e8400-e29b-41d4-a716-446655440001",    "name": "Jane Smith",    "email": "jane.smith@example.com",    "account_type": "Business",    "dispute_count": 0,    "created_at": "2025-03-21T10:15:30.654321"  }]
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 3. Get Customer by ID
+
+-   **Endpoint**: `/customers/{customer_id}`
+-   **Method**: GET
+-   **Operation**: Read
+-   **Path Parameter**:
+    -   `customer_id`: string
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440000",  "name": "John Doe",  "email": "john.doe@example.com",  "account_type": "Individual",  "dispute_count": 2,  "created_at": "2025-03-22T14:30:45.123456"}
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 4. Get Customer's Disputes
+
+-   **Endpoint**: `/customers/{customer_id}/disputes`
+-   **Method**: GET
+-   **Operation**: Read
+-   **Path Parameter**:
+    -   `customer_id`: string
+-   **Query Parameters**:
+    -   `skip`: int (default: 0)
+    -   `limit`: int (default: 100)
+-   **Output JSON**:
+    
+    ```json
+    [  {    "id": "550e8400-e29b-41d4-a716-446655440010",    "customer_id": "550e8400-e29b-41d4-a716-446655440000",    "transaction_id": "T12345",    "merchant_name": "Example Store",    "amount": 99.99,    "description": "Unauthorized charge",    "category": "Unauthorized",    "status": "Open",    "priority": 3,    "created_at": "2025-03-22T15:30:45.123456",    "resolved_at": null  }]
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 5. Update Customer
+
+-   **Endpoint**: `/customers/{customer_id}`
+-   **Method**: PUT
+-   **Operation**: Update
+-   **Path Parameter**:
+    -   `customer_id`: string
+-   **Input JSON**:
+    
+    ```json
+    {  "name": "John Doe Updated",  "email": "john.updated@example.com",  "account_type": "Business"}
+    
+    ```
+    
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440000",  "name": "John Doe Updated",  "email": "john.updated@example.com",  "account_type": "Business",  "dispute_count": 2,  "created_at": "2025-03-22T14:30:45.123456"}
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 6. Delete Customer
+
+-   **Endpoint**: `/customers/{customer_id}`
+-   **Method**: DELETE
+-   **Operation**: Delete
+-   **Path Parameter**:
+    -   `customer_id`: string
+-   **Output JSON**:
+    
+    ```json
+    {  "message": "Customer deleted successfully"}
+    
+    ```
+    
+-   **Status Code**: 200
+
+## Disputes Endpoints
+
+### 1. Create Dispute
+
+-   **Endpoint**: `/disputes/`
+-   **Method**: POST
+-   **Operation**: Create
+-   **Input JSON**:
+    
+    ```json
+    {  "customer_id": "550e8400-e29b-41d4-a716-446655440000",  "transaction_id": "T12345",  "merchant_name": "Example Store",  "amount": 99.99,  "description": "Unauthorized charge",  "category": "Unauthorized"}
+    
+    ```
+    
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440010",  "customer_id": "550e8400-e29b-41d4-a716-446655440000",  "transaction_id": "T12345",  "merchant_name": "Example Store",  "amount": 99.99,  "description": "Unauthorized charge",  "category": "Unauthorized",  "status": "Open",  "priority": null,  "created_at": "2025-03-22T15:30:45.123456",  "resolved_at": null}
+    
+    ```
+    
+-   **Status Code**: 201
+
+### 2. Get All Disputes
+
+-   **Endpoint**: `/disputes/`
+-   **Method**: GET
+-   **Operation**: Read
+-   **Query Parameters**:
+    -   `skip`: int (default: 0)
+    -   `limit`: int (default: 100)
+    -   `status`: string (optional)
+    -   `priority_sort`: bool (default: true)
+-   **Output JSON**:
+    
+    ```json
+    [  {    "id": "550e8400-e29b-41d4-a716-446655440010",    "customer_id": "550e8400-e29b-41d4-a716-446655440000",    "transaction_id": "T12345",    "merchant_name": "Example Store",    "amount": 99.99,    "description": "Unauthorized charge",    "category": "Unauthorized",    "status": "Open",    "priority": 3,    "created_at": "2025-03-22T15:30:45.123456",    "resolved_at": null  }]
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 3. Get Dispute by ID
+
+-   **Endpoint**: `/disputes/{dispute_id}`
+-   **Method**: GET
+-   **Operation**: Read
+-   **Path Parameter**:
+    -   `dispute_id`: string
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440010",  "customer_id": "550e8400-e29b-41d4-a716-446655440000",  "transaction_id": "T12345",  "merchant_name": "Example Store",  "amount": 99.99,  "description": "Unauthorized charge",  "category": "Unauthorized",  "status": "Open",  "priority": 3,  "created_at": "2025-03-22T15:30:45.123456",  "resolved_at": null,  "customer": {    "id": "550e8400-e29b-41d4-a716-446655440000",    "name": "John Doe",    "email": "john.doe@example.com",    "account_type": "Individual",    "dispute_count": 2,    "created_at": "2025-03-22T14:30:45.123456"  }}
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 4. Update Dispute
+
+-   **Endpoint**: `/disputes/{dispute_id}`
+-   **Method**: PUT
+-   **Operation**: Update
+-   **Path Parameter**:
+    -   `dispute_id`: string
+-   **Input JSON**:
+    
+    ```json
+    {  "status": "Under Review",  "priority": 4,  "description": "Updated description of the dispute"}
+    
+    ```
+    
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440010",  "customer_id": "550e8400-e29b-41d4-a716-446655440000",  "transaction_id": "T12345",  "merchant_name": "Example Store",  "amount": 99.99,  "description": "Updated description of the dispute",  "category": "Unauthorized",  "status": "Under Review",  "priority": 4,  "created_at": "2025-03-22T15:30:45.123456",  "resolved_at": null}
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 5. Delete Dispute
+
+-   **Endpoint**: `/disputes/{dispute_id}`
+-   **Method**: DELETE
+-   **Operation**: Delete
+-   **Path Parameter**:
+    -   `dispute_id`: string
+-   **Output JSON**:
+    
+    ```json
+    {  "message": "Dispute deleted successfully"}
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 6. Analyze Dispute
+
+-   **Endpoint**: `/disputes/{dispute_id}/analyze`
+-   **Method**: POST
+-   **Operation**: Create (Analysis)
+-   **Path Parameter**:
+    -   `dispute_id`: string
+-   **Output JSON**:
+    
+    ```json
+    {  "dispute_id": "550e8400-e29b-41d4-a716-446655440010",  "analysis": {    "priority": 4,    "priority_reason": "High value transaction with a new merchant",    "insights": "This appears to be a legitimate dispute based on transaction history.",    "followup_questions": ["When did you first notice the charge?", "Have you contacted the merchant?"],    "probable_solutions": ["Issue chargeback to merchant", "Request more information from customer"],    "possible_reasons": ["Fraudulent merchant", "Unauthorized use of card"],    "risk_score": 7.5,    "risk_factors": ["High transaction amount", "First transaction with merchant"]  }}
+    
+    ```
+    
+-   **Status Code**: 201
+
+### 7. Create Dispute Insights
+
+-   **Endpoint**: `/disputes/{dispute_id}/insights`
+-   **Method**: POST
+-   **Operation**: Create
+-   **Path Parameter**:
+    -   `dispute_id`: string
+-   **Input JSON**:
+    
+    ```json
+    {  "insights": "Detailed analysis of the dispute situation",  "followup_questions": ["Question 1?", "Question 2?"],  "probable_solutions": ["Solution 1", "Solution 2"],  "possible_reasons": ["Reason 1", "Reason 2"],  "risk_score": 6.5,  "risk_factors": ["Factor 1", "Factor 2"],  "priority_level": 4,  "priority_reason": "Explanation for the priority level"}
+    
+    ```
+    
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440020",  "dispute_id": "550e8400-e29b-41d4-a716-446655440010",  "insights": "Detailed analysis of the dispute situation",  "followup_questions": ["Question 1?", "Question 2?"],  "probable_solutions": ["Solution 1", "Solution 2"],  "possible_reasons": ["Reason 1", "Reason 2"],  "risk_score": 6.5,  "risk_factors": ["Factor 1", "Factor 2"],  "priority_level": 4,  "priority_reason": "Explanation for the priority level",  "created_at": "2025-03-22T16:30:45.123456",  "updated_at": null}
+    
+    ```
+    
+-   **Status Code**: 201
+
+### 8. Get Dispute Insights
+
+-   **Endpoint**: `/disputes/{dispute_id}/insights`
+-   **Method**: GET
+-   **Operation**: Read
+-   **Path Parameter**:
+    -   `dispute_id`: string
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440020",  "dispute_id": "550e8400-e29b-41d4-a716-446655440010",  "insights": "Detailed analysis of the dispute situation",  "followup_questions": ["Question 1?", "Question 2?"],  "probable_solutions": ["Solution 1", "Solution 2"],  "possible_reasons": ["Reason 1", "Reason 2"],  "risk_score": 6.5,  "risk_factors": ["Factor 1", "Factor 2"],  "priority_level": 4,  "priority_reason": "Explanation for the priority level",  "created_at": "2025-03-22T16:30:45.123456",  "updated_at": null}
+    
+    ```
+    
+-   **Status Code**: 200
+
+### 9. Update Dispute Insights
+
+-   **Endpoint**: `/disputes/{dispute_id}/insights`
+-   **Method**: PUT
+-   **Operation**: Update
+-   **Path Parameter**:
+    -   `dispute_id`: string
+-   **Input JSON**:
+    
+    ```json
+    {  "insights": "Updated analysis of the dispute situation",  "followup_questions": ["Updated question 1?", "Updated question 2?"],  "probable_solutions": ["Updated solution 1", "Updated solution 2"],  "possible_reasons": ["Updated reason 1", "Updated reason 2"],  "risk_score": 8.0,  "risk_factors": ["Updated factor 1", "Updated factor 2"],  "priority_level": 5,  "priority_reason": "Updated explanation for the priority level"}
+    
+    ```
+    
+-   **Output JSON**:
+    
+    ```json
+    {  "id": "550e8400-e29b-41d4-a716-446655440020",  "dispute_id": "550e8400-e29b-41d4-a716-446655440010",  "insights": "Updated analysis of the dispute situation",  "followup_questions": ["Updated question 1?", "Updated question 2?"],  "probable_solutions": ["Updated solution 1", "Updated solution 2"],  "possible_reasons": ["Updated reason 1", "Updated reason 2"],  "risk_score": 8.0,  "risk_factors": ["Updated factor 1", "Updated factor 2"],  "priority_level": 5,  "priority_reason": "Updated explanation for the priority level",  "created_at": "2025-03-22T16:30:45.123456",  "updated_at": "2025-03-22T17:45:30.987654"}
+    
+    ```
+    
+-   **Status Code**: 200
