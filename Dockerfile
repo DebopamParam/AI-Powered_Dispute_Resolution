@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 RUN chmod 666 /app/disputes.db
+
  
 ENV PYTHONPATH=/app 
 
