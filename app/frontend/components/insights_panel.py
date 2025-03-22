@@ -28,7 +28,7 @@ def ai_insights_panel(analysis: Dict[str, Any], priority: int):
 
         # Follow-up Questions
         if analysis.get("followup_questions"):
-            with st.expander("Follow-up Questions", expanded=False):
+            with st.expander("Follow-up Questions", expanded=True):
                 if isinstance(analysis["followup_questions"], str):
                     try:
                         # Attempt to parse as a list (in case it's a string representation)
@@ -50,7 +50,7 @@ def ai_insights_panel(analysis: Dict[str, Any], priority: int):
 
         # Probable Solutions
         if analysis.get("probable_solutions"):
-            with st.expander("Probable Solutions", expanded=False):
+            with st.expander("Probable Solutions", expanded=True):
                 if isinstance(analysis["probable_solutions"], str):
                     try:
                         solutions = eval(analysis["probable_solutions"])
@@ -71,7 +71,7 @@ def ai_insights_panel(analysis: Dict[str, Any], priority: int):
 
         # Possible Reasons
         if analysis.get("possible_reasons"):
-            with st.expander("Possible Reasons", expanded=False):
+            with st.expander("Possible Reasons", expanded=True):
                 if isinstance(analysis["possible_reasons"], str):
                     try:
                         reasons = eval(analysis["possible_reasons"])
@@ -91,7 +91,7 @@ def ai_insights_panel(analysis: Dict[str, Any], priority: int):
 
         # Risk Factors
         if analysis.get("risk_factors"):
-            with st.expander("Risk Factors", expanded=False):
+            with st.expander("Risk Factors", expanded=True):
                 if isinstance(analysis["risk_factors"], str):
                     try:
                         risk_factors = eval(analysis["risk_factors"])
