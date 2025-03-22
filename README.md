@@ -1,3 +1,12 @@
+---
+title: Banking Dispute Resolution System
+emoji: 🤖
+colorFrom: green
+colorTo: gray
+pinned: false
+sdk: docker
+---
+
 # Banking Dispute Resolution System
 
 A prototype system for handling banking disputes with AI-powered insights and priority assignment.
