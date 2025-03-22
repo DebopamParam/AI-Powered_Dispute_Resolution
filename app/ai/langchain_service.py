@@ -19,8 +19,7 @@ class DisputeAIService:
             max_tokens=ai_settings.MAX_TOKENS,
             timeout=None,
             max_retries=ai_settings.MAX_RETRIES,
-            # google_api_key=os.environ.get("GOOGLE_API_KEY", ai_settings.GOOGLE_API_KEY),
-            google_api_key="AIzaSyBeC3D_rxPbaLyQjgeqCB3PZRQL7kT4mrE",
+            google_api_key=os.environ.get("GOOGLE_API_KEY", ai_settings.GOOGLE_API_KEY),
         )
 
     def analyze_dispute(self, dispute_data: Dict[str, Any]) -> Dict[str, Any]:

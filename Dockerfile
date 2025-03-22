@@ -7,6 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-ENV PYTHONPATH=/app
+RUN chmod 666 /app/disputes.db
+ 
+ENV PYTHONPATH=/app 
 
 CMD ["python", "app/entrypoint.py"]
