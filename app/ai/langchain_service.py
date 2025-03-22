@@ -64,23 +64,23 @@ class DisputeAIService:
             "followup_questions": (
                 insights_result.followup_questions
                 if insights_result.followup_questions
-                else ""
+                else []
             ),
             "probable_solutions": (
                 insights_result.probable_solutions
                 if insights_result.probable_solutions
-                else ""
+                else []
             ),
             "possible_reasons": (
                 insights_result.possible_reasons
                 if insights_result.possible_reasons
-                else ""
+                else []
             ),
             "risk_score": (
                 insights_result.risk_score if insights_result.risk_score else 0
             ),
             "risk_factors": (
-                insights_result.risk_factors if insights_result.risk_factors else ""
+                insights_result.risk_factors if insights_result.risk_factors else []
             ),
         }
 
