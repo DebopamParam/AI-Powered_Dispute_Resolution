@@ -6,7 +6,7 @@ colorTo: gray
 pinned: false
 sdk: docker
 --- -->
-# AI-Powered Dispute Resolution
+# **AI-Powered Financial Dispute Resolution**
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/DebopamParam/AI-Powered_Dispute_Resolution/ci.yml?branch=main)](https://github.com/DebopamParam/AI-Powered_Dispute_Resolution/actions)
 [![Version](https://img.shields.io/github/v/release/DebopamParam/AI-Powered_Dispute_Resolution?include_prereleases)](https://github.com/DebopamParam/AI-Powered_Dispute_Resolution/releases)
@@ -78,11 +78,6 @@ graph TD
     E -->|Analysis Results| C
     C -->|Response| B
     B -->|Display Results| A
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbb,stroke:#333,stroke-width:2px
-    style E fill:#bff,stroke:#333,stroke-width:2px
 ```
 
 The diagram above illustrates the flow of data through the system, from user input to AI analysis and result presentation.
@@ -124,11 +119,6 @@ graph TD
     B -->|Port 8501| D[Streamlit Frontend]
     C -->|Internal Communication| D
     C -->|Database| E[SQLite]
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbb,stroke:#333,stroke-width:2px
-    style E fill:#bff,stroke:#333,stroke-width:2px
 ```
 
 The deployment architecture shows how the application is packaged in a single Docker container for deployment on Hugging Face Spaces.
@@ -193,10 +183,6 @@ graph TD
     G --> N[Provide Feedback on Process]
     K --> N
     N --> O[End]
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style F fill:#bbf,stroke:#333,stroke-width:2px
-    style J fill:#bbf,stroke:#333,stroke-width:2px
-    style O fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 This diagram illustrates the typical user journey through the dispute resolution process.
