@@ -1,0 +1,10 @@
+fastapi[all]
+sqlalchemy
+pydantic
+streamlit
+requests
+python-dotenv
+langchain
+langchain-google-genai
+google-generativeai
+pytest

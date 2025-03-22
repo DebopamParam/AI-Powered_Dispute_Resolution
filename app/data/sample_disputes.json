@@ -1,0 +1,26 @@
+{
+    "disputes": [
+        {
+            "id": "D1001",
+            "customer_id": "C1001",
+            "transaction_id": "T12345",
+            "merchant_name": "Utility Co",
+            "amount": 120.00,
+            "category": "Billing Error",
+            "description": "Unexpected increase in monthly utility bill without prior notification.",
+            "status": "New",
+            "created_at": "2024-01-15T10:30:00Z"
+        },
+        {
+            "id": "D1002",
+            "customer_id": "C1002",
+            "transaction_id": "T67890",
+            "merchant_name": "Online Shop",
+            "amount": 89.99,
+            "category": "Item Not Received",
+            "description": "Ordered a headphone set 3 weeks ago but haven't received it yet. Tracking shows no movement for 2 weeks.",
+            "status": "New",
+            "created_at": "2024-01-18T14:15:00Z"
+        }
+    ]
+}

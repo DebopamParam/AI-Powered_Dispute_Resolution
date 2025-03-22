@@ -1,0 +1,14 @@
+{
+    "categories": [
+        "Billing Error",
+        "Fraudulent Transaction",
+        "Item Not Received",
+        "Item Not As Described",
+        "Duplicate Charge",
+        "Cancelled Service",
+        "Refund Not Processed",
+        "Subscription Issue",
+        "ATM Issue",
+        "Other"
+    ]
+}
