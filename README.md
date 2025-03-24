@@ -65,7 +65,87 @@ The AI-Powered Dispute Resolution system is designed to streamline the process o
 - **Single Container Solution**: Entire application packaged in a single Docker container
 - **Environment Variable Configuration**: Easy configuration through environment variables
 
+
 ## 🏗️ Architecture Overview
+
+## Project Structure
+```markdown
+AI_Financial_Dispute_Automation/
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── disputes.db
+├── Dockerfile
+├── README.md
+├── requirements.txt
+├── scrape.py
+│
+├── app/
+│   ├── entrypoint.py
+│   ├── main.py
+│   │
+│   ├── ai/
+│   │   ├── dispute_analyzer.py
+│   │   ├── gemini_client.py
+│   │   ├── langchain_service.py
+│   │   │
+│   │   ├── prompts/
+│   │   │   ├── dispute_insights.py
+│   │   │   ├── dispute_priority.py
+│   │   │   ├── followup_questions.py
+│   │   │
+│   │   └── schemas/
+│   │       ├── insights_schema.py
+│   │       ├── priority_schema.py
+│   │
+│   ├── api/
+│   │   ├── database.py
+│   │   ├── models.py
+│   │   │
+│   │   ├── routes/
+│   │   │   ├── customers.py
+│   │   │   ├── disputes.py
+│   │   │
+│   │   └── services/
+│   │       ├── ai_service.py
+│   │       ├── database_service.py
+│   │       ├── priority_service.py
+│   │       ├── recommendation_service.py
+│   │
+│   ├── core/
+│   │   ├── ai_config.py
+│   │   ├── config.py
+│   │
+│   ├── data/
+│   │   ├── dispute_categories.json
+│   │   ├── sample_disputes.json
+│   │
+│   └── frontend/
+│       ├── streamlit_app.py
+│       │
+│       ├── components/
+│       │   ├── api_popover.py
+│       │   ├── dispute_card.py
+│       │   ├── followup_questions.py
+│       │   ├── insights_panel.py
+│       │   ├── sidebar.py
+│       │
+│       ├── pages/
+│       │   ├── admin.py
+│       │   ├── api_docs.py
+│       │   ├── customer_details.py
+│       │   ├── dashboard.py
+│       │   ├── dispute_details.py
+│       │   ├── dispute_form.py
+│       │
+│       └── utils/
+│           ├── api_client.py
+│           ├── ui_helpers.py
+│
+└── tests/
+    └── test_endpoints.py
+```
 
 ### High-Level System Diagram
 
